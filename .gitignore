@@ -1,5 +1,9 @@
 # Ignore the image dataset folder
 gesture_images/
+hand_contours/
+
+# IDE files
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
