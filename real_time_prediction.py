@@ -39,12 +39,11 @@ def video_stream():
         cv2.rectangle(frame, box_start, box_end, (255, 0, 0), 2)
         # Display the resulting frame
         cv2.imshow('frame', frame)
-
-        if time.time() - start_time > 1.0:
+        if time.time() - start_time > 0.5:
             # Predict every one second
             start_time = time.time()
             image = frame[box_start[1]+5:box_end[1] -
-                        5, box_start[0]+5:box_end[0]-5, :]
+                          5, box_start[0]+5:box_end[0]-5, :]
 
             print(image.shape)
             image = Image.fromarray(image.astype('uint8'), 'RGB')
