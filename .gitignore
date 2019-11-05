@@ -1,6 +1,7 @@
 # Ignore the image dataset folder
 gesture_images/
 hand_contours/
+*.zip
 
 # IDE files
 .idea/
