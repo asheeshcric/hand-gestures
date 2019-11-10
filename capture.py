@@ -4,10 +4,10 @@ import time
 import numpy as np
 
 
-dir_name = 'start_ok_gestures'
+dir_name = 'cropped_images/no_gesture'
 
-if dir_name not in os.listdir('cropped_images'):
-    os.mkdir('cropped_images/' + dir_name)
+if not os.path.exists(dir_name):
+    os.makedirs(dir_name)
 
 
 cap = cv2.VideoCapture(0)
@@ -32,6 +32,7 @@ while(True):
     # Display the resulting frame
     cv2.imshow('frame',frame)
     if cv2.waitKey(32) == ord(' '):
+        print('Writing image...')
         start = True
         start_time = time.time()
 
@@ -39,7 +40,7 @@ while(True):
         if time.time() - start_time > 0.05:
             count += 1
             start_time = time.time()
-            cv2.imwrite('cropped_images/{}/image_{}.jpg'.format(dir_name, count), frame[box_start[1]+5:box_end[1]-5, box_start[0]+5:box_end[0]-5, :])
+            cv2.imwrite('{}/image_{}.jpg'.format(dir_name, count), frame[box_start[1]+5:box_end[1]-5, box_start[0]+5:box_end[0]-5, :])
     
     if cv2.waitKey(1) & 0xFF == ord('q') or count >= 600:       
         break

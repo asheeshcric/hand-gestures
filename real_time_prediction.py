@@ -48,9 +48,11 @@ def video_stream():
             print(image.shape)
             image = Image.fromarray(image.astype('uint8'), 'RGB')
             prediction = predict_image(image)
-            predicted_classes = {
-                0: 'CLOSED FIST', 1: 'LEFT', 2: 'OPEN PALM', 3: 'RIGHT', 4: 'START OK'
-            }
+            predicted_classes = ['closed_fist', 'left',
+                                 'no_gesture', 'open_palm', 'right', 'start_ok']
+            # predicted_classes = {
+            #     0: 'CLOSED FIST', 1: 'LEFT', 2: 'OPEN PALM', 3: 'RIGHT', 4: 'START OK'
+            # }
             print('{}: {}'.format(prediction, predicted_classes[prediction]))
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -63,7 +65,7 @@ def video_stream():
 
 if __name__ == '__main__':
     # Load model
-    model = torch.load('gesture_model.pth')
+    model = torch.load('new_gesture_model.pth')
     model.eval()
     # Test transforms
     test_transforms = transforms.Compose([transforms.Resize(224),
