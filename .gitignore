@@ -1,4 +1,5 @@
 # Ignore the image dataset folder
+datasets/
 gesture_images/
 hand_contours/
 *.zip
