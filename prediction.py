@@ -1,4 +1,5 @@
 import cv2
+import keyboard
 import numpy as np
 import math
 import os
@@ -19,6 +20,16 @@ def predict_image():
     out = net(k)
     _, predicted = torch.max(out, 1)
     return classes[predicted[0]]
+
+
+def control_keyboard(prediction):
+    controls = {
+        'open_palm': '',
+        'ok': '',
+        'left': '',
+        'right': '',
+
+    }
 
 
 # CNN Network for the trained model
@@ -185,6 +196,7 @@ def main():
             prediction = predict_image()
 
             display_output(frame, areacnt=areacnt, arearatio=arearatio, l=l, prediction=prediction)
+            keyboard.write('keyboard')
 
             # show the windows
             cv2.imshow('mask', mask)
