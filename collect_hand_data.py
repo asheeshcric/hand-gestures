@@ -64,8 +64,8 @@ def collect_images():
     num_frames = 0
 
     # Details for storage of image data
-    image_class = 'left'
-    store_path = f'./datasets/new_hand_contours/{image_class}'
+    image_class = 'ok'
+    store_path = f'./datasets/gesture_contours/{image_class}'
     if not os.path.exists(store_path):
         os.makedirs(store_path)
     img_count = len(os.listdir(store_path))
@@ -81,10 +81,12 @@ def collect_images():
         keypress = cv2.waitKey(1) & 0xFF
         # If 't' is pressed, start classifying the frames
         if keypress == ord('t'):
+            print('Collecting images...')
             store = True
 
         # If 'z' is pressed, end the program
         if keypress == ord("z") or this_count % 600 == 0:
+            print('Task completed!')
             break
 
         # Get processed gray image along with the original frame
