@@ -159,7 +159,7 @@ if __name__ == "__main__":
     classes = ['fist', 'left', 'ok', 'right', 'straight']
     # Load trained model
     net = Net()
-    net.load_state_dict(torch.load('models/gesture_model.pth'))
+    net.load_state_dict(torch.load('models/gesture_model_15epoch.pth'))
     transform = transforms.Compose(
         [transforms.Scale(128),
          transforms.ToTensor(),
